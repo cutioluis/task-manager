@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRouter } from "next/router";
 import { COLORS } from "../constants/index";
 import { BsPlusCircleFill } from "react-icons/bs";
 
@@ -21,9 +22,11 @@ const IconPlus = styled(BsPlusCircleFill)`
 `;
 
 const AddTask = () => {
+  const { push } = useRouter();
+
   return (
     <ContainerAdd>
-      <IconPlus />
+      <IconPlus onClick={() => push("/new")} />
     </ContainerAdd>
   );
 };
