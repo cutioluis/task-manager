@@ -16,10 +16,6 @@ export const TaskProvider = ({ children }) => {
     },
   ]);
 
-  const sayHello = (name) => {
-    return `Hello ${name}`;
-  };
-
   return (
     <TaskContext.Provider value={{ tasks, sayHello }}>
       {children}
