@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 import { COLORS } from "../constants/index";
+import { useTask } from "../context/TaskContext";
+
+import TaskEmpty from "../components/TaskEmpty";
 
 const ContainerTask = styled.article`
   padding: 30px;
+  margin: 50px;
   max-width: 350px;
   border-radius: 20px;
   background-color: ${COLORS.blueSoft};
@@ -44,20 +48,32 @@ const TaskTime = styled.div`
 `;
 
 const Task = () => {
+  const { tasks, deleteTask } = useTask();
+
   return (
-    <ContainerTask>
-      <TaskDescription>
-        <h3>Football</h3>
-        <p>Ligue 1 oponer postoned after Marseille virus cases</p>
-      </TaskDescription>
-      <TaskLocation>
-        <p>Quito, Ecuador</p>
-      </TaskLocation>
-      <Divider></Divider>
-      <TaskTime>
-        <p>12:45 AM - 1:15 PM</p>
-      </TaskTime>
-    </ContainerTask>
+    <div>
+      {tasks.length === 0 ? (
+        <TaskEmpty></TaskEmpty>
+      ) : (
+        tasks.map((task) => (
+          <ContainerTask key={task.id}>
+            <TaskDescription>
+              <h3>{task.title}</h3>
+              <p>{task.description}</p>
+            </TaskDescription>
+            <TaskLocation>
+              <p>Quito, Ecuador</p>
+            </TaskLocation>
+            <Divider></Divider>
+            <TaskTime>
+              <p>12:45 AM - 1:15 PM</p>
+            </TaskTime>
+            <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <button>Rename</button>
+          </ContainerTask>
+        ))
+      )}
+    </div>
   );
 };
 
