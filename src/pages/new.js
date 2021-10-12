@@ -76,15 +76,19 @@ const ButtonCategory = styled.button`
 
 const categorys = [
   {
+    id: 0,
     name: "📙 Education",
   },
   {
+    id: 1,
     name: "⚽ Sports",
   },
   {
+    id: 2,
     name: "✏️ Meetings",
   },
   {
+    id: 3,
     name: "👋️ Friends",
   },
 ];
@@ -128,6 +132,7 @@ const TaskCreator = () => {
         <CategoryContainer>
           {categorys.map((category) => (
             <ButtonCategory
+              key={category.id}
               onClick={(e) => {
                 e.preventDefault();
               }}
