@@ -129,7 +129,7 @@ const TaskCreator = () => {
           {categorys.map((category) => (
             <ButtonCategory
               onClick={(e) => {
-                e.stopPropagation();
+                e.preventDefault();
               }}
             >
               {category.name}
