@@ -1,4 +1,4 @@
-export const CATEGORIES = {
+export const categorias = {
   education: "📙 Education",
   sports: "⚽ Sports",
   meetings: "✏️ Meetings",
